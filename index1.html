@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>🐾 Found Cheeku?</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(160deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px 20px 40px;
+    color: white;
+  }
+
+  .alert-banner {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 16px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: 0 8px 30px rgba(255, 65, 108, 0.4);
+    animation: pulse-banner 2s infinite;
+    margin-bottom: 24px;
+  }
+
+  .alert-banner .alert-icon {
+    font-size: 1.4rem;
+    animation: shake 1.5s infinite;
+  }
+
+  @keyframes pulse-banner {
+    0%, 100% { box-shadow: 0 8px 30px rgba(255,65,108,0.4); }
+    50% { box-shadow: 0 8px 50px rgba(255,65,108,0.7); }
+  }
+
+  @keyframes shake {
+    0%,100% { transform: rotate(0deg); }
+    20% { transform: rotate(-15deg); }
+    40% { transform: rotate(15deg); }
+    60% { transform: rotate(-10deg); }
+    80% { transform: rotate(10deg); }
+  }
+
+  .card {
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    animation: slideUp 0.6s ease;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-top {
+    background: linear-gradient(135deg, rgba(255,220,120,0.15), rgba(255,180,50,0.08));
+    padding: 28px 24px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+  }
+
+  .dog-emoji {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 6px;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .dog-name {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #ffd87a;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 20px rgba(255,216,122,0.5);
+    line-height: 1;
+  }
+
+  .dog-tagline {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    margin-top: 6px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .card-body {
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .info-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .info-block .icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .icon-wrap.amber { background: rgba(255,216,122,0.2); }
+  .icon-wrap.blue  { background: rgba(100,180,255,0.2); }
+  .icon-wrap.red   { background: rgba(255,100,100,0.2); }
+
+  .info-block .label {
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.45);
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .info-block .value {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.4;
+  }
+
+  /* CALL BUTTON */
+  .call-section {
+    padding: 0 24px 28px;
+  }
+
+  .call-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #11cb5f, #0d9e4c);
+    color: white;
+    text-decoration: none;
+    border-radius: 18px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    box-shadow:
+      0 0 0 0 rgba(17,203,95,0.6),
+      0 8px 30px rgba(17,203,95,0.4);
+    animation: call-pulse 2s infinite;
+    transition: transform 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .call-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+    border-radius: inherit;
+  }
+
+  .call-btn:active {
+    transform: scale(0.97);
+  }
+
+  @keyframes call-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(17,203,95,0.6), 0 8px 30px rgba(17,203,95,0.4); }
+    50% { box-shadow: 0 0 0 12px rgba(17,203,95,0), 0 8px 40px rgba(17,203,95,0.6); }
+  }
+
+  .call-icon {
+    font-size: 1.4rem;
+    animation: ring 2s infinite;
+  }
+
+  @keyframes ring {
+    0%,90%,100% { transform: rotate(0deg); }
+    92% { transform: rotate(-20deg); }
+    95% { transform: rotate(20deg); }
+    97% { transform: rotate(-15deg); }
+  }
+
+  .call-btn-text { display: flex; flex-direction: column; align-items: flex-start; }
+  .call-label { font-size: 0.65rem; opacity: 0.85; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; }
+  .call-number { font-size: 1.2rem; font-weight: 900; letter-spacing: 0.05em; }
+
+  .footer-note {
+    text-align: center;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.35);
+    margin-top: 20px;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+  }
+
+  /* NAVIGATION BUTTON */
+  .nav-section {
+    padding: 0 24px 28px;
+  }
+
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #1a73e8, #0d47a1);
+    color: white;
+    text-decoration: none;
+    border-radius: 18px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    box-shadow:
+      0 0 0 0 rgba(26,115,232,0.6),
+      0 8px 30px rgba(26,115,232,0.4);
+    animation: nav-pulse 2s infinite;
+    transition: transform 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+    border-radius: inherit;
+  }
+
+  .nav-btn:active { transform: scale(0.97); }
+
+  @keyframes nav-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(26,115,232,0.6), 0 8px 30px rgba(26,115,232,0.4); }
+    50% { box-shadow: 0 0 0 12px rgba(26,115,232,0), 0 8px 40px rgba(26,115,232,0.6); }
+  }
+
+  .nav-icon {
+    font-size: 1.4rem;
+    animation: pin-bounce 2s infinite;
+  }
+
+  @keyframes pin-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  .nav-btn-text { display: flex; flex-direction: column; align-items: flex-start; }
+  .nav-label { font-size: 0.65rem; opacity: 0.85; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; }
+  .nav-address { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.02em; line-height: 1.3; }
+
+  .section-divider {
+    margin: 0 24px 16px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent);
+  }
+</style>
+</head>
+<body>
+
+  <div class="alert-banner">
+    <span class="alert-icon">🚨</span>
+    <span>Lost Dog Found — Please Help!</span>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <span class="dog-emoji">🐕</span>
+      <div class="dog-name">Cheeku</div>
+      <div class="dog-tagline">I'm lost — my family is looking for me!</div>
+    </div>
+
+    <div class="card-body">
+      <div class="info-block">
+        <div class="icon-wrap amber">👤</div>
+        <div>
+          <div class="label">Owner</div>
+          <div class="value">Kshitij Nimje</div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="icon-wrap blue">📍</div>
+        <div>
+          <div class="label">Home Address</div>
+          <div class="value">Plot No. 45, Shree Hari Nagar 1,<br>Manewada Ring Road, 440027, Nagpur</div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="icon-wrap red">🚨</div>
+        <div>
+          <div class="label">Emergency Contact</div>
+          <div class="value">+91 98228 80263</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="call-section">
+      <a class="call-btn" href="tel:+919822880263">
+        <span class="call-icon">📞</span>
+        <div class="call-btn-text">
+          <span class="call-label">Tap to Call Owner</span>
+          <span class="call-number">+91 98228 80263</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="nav-section">
+      <a class="nav-btn" href="https://www.google.com/maps/dir/?api=1&destination=Plot+No+45+Shree+Hari+Nagar+1+Manewada+Ring+Road+Nagpur+440027" target="_blank">
+        <span class="nav-icon">🗺️</span>
+        <div class="nav-btn-text">
+          <span class="nav-label">Tap to Open Location</span>
+          <span class="nav-address">Navigate to Cheeku's Home</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    🐾 Thank you for helping Cheeku get home safely!<br>
+    Tap the green button above to directly call the owner.
+  </div>
+
+</body>
+</html>
